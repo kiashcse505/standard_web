@@ -1,0 +1,361 @@
+{% extends "base.html" %}
+{% load js staticfiles %}
+{% block content %}
+    <div class="row">
+    <div class="span12">
+    <div class="text-success text-center">
+        {% if userForm.instance.id %}
+            <h2>Update User Profile</h2>
+        {% else %}
+            <h2>User Registration</h2>
+        {% endif %}
+        <hr>
+    </div>
+    {% if userForm.errors %}
+        <div class="row">
+            <div class="text-success text-center">
+                {% for aField in userForm.non_field_error %}
+                    <span class="text-error">{{ aField.errors }}</span>
+                {% endfor %}
+
+                {% for anError in userForm.errors %}
+                    <span class="text-error">{{ anError.error }}</span>
+                {% endfor %}
+
+            </div>
+        </div>
+    {% endif %}
+    {% if profileForm.errors %}
+        <div class="row">
+            <div class="text-success text-center">
+
+                {% for aField in profileForm.non_field_error %}
+                    <span class="text-error">{{ aField.errors }}</span>
+                {% endfor %}
+
+                {% for anError in profileForm.errors %}
+                    <span class="text-error">{{ anError.error }}</span>
+                {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+
+    <div class="view-body" style="margin-left:30px;">
+    <div class="row">
+    <div id="search-result" class="span12">
+    <form action="." method="POST" enctype="multipart/form-data" id="entity-update-form">
+    {% csrf_token %}
+    <div id="user-info" class="row">
+    <div style="height: auto" class="span6">
+{#        <h4 class="text-success">Login Information </h4><br/><br/>#}
+
+
+        <div class="row from-inline">
+            <div class="span2">Username<span class="required">*</span> :</div>
+            <div class="span4">
+                {{ userForm.username }}
+                {{ userForm.username.errors }}
+            </div>
+        </div>
+
+        {% if userForm.password1 %}
+            <div class="row from-inline">
+                <div class="span2">Password<span class="required"> * </span>:</div>
+                <div class="span4">
+                    {{ userForm.password1 }}
+                    {{ userForm.password1.errors }}
+                </div>
+            </div>
+            <div class="row from-inline">
+                <div class="span2">Password Confirmation<span class="required"> * </span>:</div>
+                <div class="span4">
+                    {{ userForm.password2 }}
+                    {{ userForm.password2.errors }}
+                </div>
+            </div>
+        {% endif %}
+
+        <div class="row from-inline">
+            <div class="span2"></div>
+            <div class="span4">
+                {% if userForm.instance.id %}
+                    <a id="change-pass" href="{% url 'user-password-update' pk=userForm.instance.id %}">Change
+                        Password</a>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+    <div class="span6">
+
+        <div class="row from-inline">
+            <div class="span2">Salutation<span class="required"> * </span> :</div>
+            <div class="span4">
+                {{ profileForm.salutation }}
+                {{ profileForm.salutation.errors }}
+            </div>
+        </div>
+        <div class="row from-inline">
+            <div class="span2">Surname<span class="required"> * </span> :</div>
+            <div class="span4">
+                {{ profileForm.surname }}
+                {{ profileForm.surname.errors }}
+            </div>
+        </div>
+
+
+        <div class="row from-inline">
+                    <div class="span2">Email<span class="required"> * </span> :</div>
+                    <div class="span4">
+                        {{ userForm.email }}
+                        {{ userForm.email.errors }}
+                    </div>
+        </div>
+
+
+
+        <div class="row from-inline">
+            <div class="span2">Phone <span class="required"> * </span> :</div>
+            <div class="span4">
+                {{ profileForm.phone }}
+                {{ profileForm.phone.errors }}
+            </div>
+        </div>
+        <div class="row from-inline">
+            <div class="span2">Time Zone <span class="required"> * </span>  :</div>
+            <div class="span4">
+                {{ profileForm.timezone }}
+                {{ profileForm.timezone.errors }}
+            </div>
+        </div>
+    </div>
+
+
+
+    <div class="row span12 panel-group" id="accordion">
+        <hr>
+        <div class="text-success text-center">
+        </div>
+        <br/>
+
+        <div id="collapseOne" class="row panel-collapse collapse in">
+            <div class="span6">
+
+                <div class="row from-inline">
+                    <div class="span2">First Name <span class="required"> * </span>:</div>
+                    <div class="span4">
+                        {{ userForm.first_name }}
+                        {{ userForm.first_name.errors }}
+                    </div>
+                </div>
+                <div class="row from-inline">
+                    <div class="span2">Last Name :</div>
+                    <div class="span4">
+                        {{ userForm.last_name }}
+                        {{ userForm.last_name.errors }}
+                    </div>
+                </div>
+
+                <div class="row from-inline">
+                    <div class="span2">Nickname<span class="required"> * </span> :</div>
+                    <div class="span4">
+                        {{ profileForm.nickname }}
+                        {{ profileForm.nickname.errors }}
+                    </div>
+                </div>
+                <div class="row from-inline">
+                    <div class="span2">Sex:</div>
+                    <div class="span4">
+                        {{ profileForm.sex }}
+                        {{ profileForm.sex.errors }}
+                    </div>
+                </div>
+
+            </div>
+            <div class="span6">
+            <div class="row from-inline">
+                    <div class="span2">Mobile:</div>
+                    <div class="span4">
+                        {{ profileForm.mobile }}
+                        {{ profileForm.mobile.errors }}
+                    </div>
+            </div>
+                <div class="row">
+                    <div class="span2">Photo:</div>
+                    <div class="span4">
+                        {% if profileForm.instance.id %}
+                            <div class="user-image">
+                                <img class="media-profile" src="{{ MEDIA_URL }}{{ profile.get_photo }}"/>
+
+                            </div>
+                        {% endif %}
+                        <div class="patient-image">
+                            {% if profileForm.instance.id %}
+                                <div class="row form-inline">
+                                    <input id="photo-clear_id" type="checkbox" name="photo-clear"
+                                           style="margin-left:20px;">
+                                    <label for="photo-clear_id">Clear</label>
+                                </div>
+                            {% endif %}
+                            <input id="id_photo" type="file" name="photo">
+                        </div>
+                    </div>
+                </div>
+                <br/>
+
+           <div class="row">
+                            <div class="span2"></div>
+                            <div class="span4">
+                                <div id="error_required_field" class="alert error" style="display:none; color: #ff0000;width:165px;">Please Select One field(Super User or Group)</div>
+                            </div>
+                        </div>
+           {% if user.is_superuser %}
+                <div class="row from-inline" id="is_superuser_row">
+                        <div class="span2">IS Super User :</div>
+                        <div class="span4">
+                            {{ userForm.is_superuser }}
+                            {{ userForm.is_superuser.errors }}
+                            <p class="help">If You checked Super User then No Need to &nbsp;Select Group </p>
+                        </div>
+                </div>
+           {% endif %}
+
+               <div class="row from-inline user_group">
+{#                    {% if userForm.instance.id %}#}
+                        <div class="span2">Select Group:</div>
+                        <div class="span4">
+                            {{ userForm.groups }}
+                            {{ userForm.groups.errors }}
+                        </div>
+{#                    {% endif %}#}
+                </div>
+                <div class="row from-inline">
+                    <div class="span2">Privacy:</div>
+                    <div class="span4">
+                        {{ profileForm.privacy }}
+                        {{ profileForm.privacy.errors }}
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+
+    </form>
+
+    </div>
+    <div class="row control-group">
+        <div class="span2">&nbsp;</div>
+        <div class="span3 offset3 controls">
+            <input type="button" class="btn btn-success entity-submit-btn"
+                   value="{% if userForm.instance.id %} Update {% else %} Add {% endif %}">
+            <input type="button" class="btn btn-danger entity-cancel-btn" value="Cancel">
+        </div>
+    </div>
+    </div>
+    </div>
+    </div>
+    </div>
+{% endblock %}
+
+{% block headextra %}
+    {% css "users/css/user_form.css" %}
+    {% css "users/css/jquery-ui.css" %}
+{% endblock %}
+
+{% block footer_scripts %}
+    {% load dajaxice_templatetags %}
+    {% dajaxice_js_import %}
+{#     <script src="https://ajax.aspnetcdn.com/ajax/jquery.validate/1.11.1/jquery.validate.js"></script>#}
+    {% js 'jquery.validation/dist/jquery.validate.js' %}
+
+    {% js "users/js/jquery-ui.js" %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $("#datepicker").datepicker({
+                changeMonth: true,
+                changeYear: true
+            });
+            $("#format").change(function () {
+                $("#datepicker").datepicker("option", "dateFormat", $(this).val());
+            });
+            template.registerEntityListingUrl("{% url 'users-list' %}");
+
+            function loadGeoLoactionInputs(value) {
+
+                if (value == 1) {
+                    $("#id_division").parent().parent().show();
+                    $("#id_district").parent().parent().show();
+                    $("#id_region").parent().parent().show();
+
+                } else if (value == 2) {
+                    $("#id_division").parent().parent().hide();
+                    $("#id_district").parent().parent().hide();
+                    $("#id_region").parent().parent().show();
+
+                } else if (value == 3) {
+                    $("#id_division").parent().parent().hide();
+                    $("#id_district").parent().parent().hide();
+                    $("#id_region").parent().parent().show();
+                }
+            }
+
+            $("#id_country").change(function () {
+                var value = $(this).val();
+                loadGeoLoactionInputs(value);
+            });
+
+            loadGeoLoactionInputs($("#id_country").val());
+
+             $('#id_is_superuser').change(function(){
+                   if(this.checked){
+                      $('.user_group').slideUp()
+                   }else{
+                      $('.user_group').slideDown()
+                   }
+
+                });
+
+             $("#id_groups").bind("change", function () {
+                if ($(this).val() == "1") {
+                    $("#is_superuser_row").slideUp();
+                }else if($(this).val() == "2"){
+                    $("#is_superuser_row").slideUp();
+                }else{
+                    $("#is_superuser_row").slideDown();
+                }
+
+             });
+             $('#entity-update-form').validate({ // initialize the plugin
+                rules: {
+                    {# subject: {#}
+                    {# required: true#}
+                    {# },#}
+                    {# patients: {#}
+                    {# require_from_group: [1, ".send"]#}
+                    {# }#}
+                },
+                submitHandler: function(form) {
+                    console.log('the value of slect')
+                    console.log($('#id_groups').val());
+                    if($('#id_is_superuser').is(':checked')== false  && $('#id_groups').val() == null ){
+//console.log('not valid');
+                        $("#error_required_field").show();
+                        return false;
+                    }
+                        //console.log("form is going to submitted");
+                        form.submit();
+
+                }
+            });
+
+
+        });
+
+    </script>
+{% endblock %}

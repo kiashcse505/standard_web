@@ -1,0 +1,14 @@
+{
+  "name": "Messi",
+  "homepage": "https://github.com/milu-buet/Messi",
+  "_release": "2c77e9ac74",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "2c77e9ac740f36f3d9dc2d75c5b5038c242575fd"
+  },
+  "_source": "https://github.com/milu-buet/Messi.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/milu-buet/Messi.git",
+  "_direct": true
+}

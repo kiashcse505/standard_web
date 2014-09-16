@@ -1,0 +1,223 @@
+{% extends "base.html" %}
+{% load js staticfiles %}
+{% block content %}
+    <div class="row">
+        <div class="span12" style="margin-left:70px;">
+            <div class="row span12">
+                <div class="text-success text-center">
+                    <div class="row">
+                        <div class="span2  text-center profile-detail-photo">
+                            <img class="media-profile" src="{{ MEDIA_URL }}{{ profile.get_photo }}"/>
+                        </div>
+                        <div class="span6">
+                            <h2>{{ profile.user.username }}'s Profile</h2>
+
+                        </div>
+
+                    </div>
+                   <hr>
+                </div>
+            </div>
+
+            <div class="view-body" style="margin-left:30px;">
+                <div class="row">
+                    <div id="search-result" class="span12">
+                        <form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+                            <div id="user-info" class="row">
+                                <div style="height: auto" class="span6">
+                                    <h4 class="text-success">Login Information </h4><br/><br/>
+
+
+                                    <div class="row" from-inline>
+                                        <div class="span2">Username:</div>
+                                        <div class="span4">
+                                            <label>{{ object.user.username }}</label>
+                                        </div>
+                                    </div><hr>
+                                    <div class="row" from-inline>
+                                        <div class="span2">Email:</div>
+                                        <div class="span4">
+                                            {{ object.user.email }}
+                                        </div>
+                                    </div><hr>
+                                    <div class="row" from-inline>
+                                        <div class="span2">First Name :</div>
+                                        <div class="span4">
+                                            {{ object.user.first_name }}
+                                        </div>
+                                    </div><hr>
+                                    <div class="row" from-inline>
+                                        <div class="span2">Last Name :</div>
+                                        <div class="span4">
+                                            {{ object.user.last_name }}
+                                        </div>
+                                    </div><hr>
+                                    <div class="row" from-inline>
+                                        <div class="span2">Active :</div>
+                                        <div class="span4">
+
+                                            <input type="checkbox" name="is_active" disabled
+                                                   {% if user.is_active %}checked{% endif %}/>
+
+                                        </div>
+                                    </div><hr>
+                                </div>
+                                <div class="span6">
+                                    <h4 class="text-success">User Mandatory Fields</h4><br/><br/>
+
+                                    <div class="row" from-inline>
+                                        <div class="span2">Salutation:</div>
+                                        <div class="span4">
+                                            {{ profile.salutation }}
+                                        </div>
+                                    </div><hr>
+                                    <div class="row" from-inline>
+                                        <div class="span2">Birthday:</div>
+                                        <div class="span4">
+                                            {{ profile.birthdate }}
+                                        </div>
+                                    </div><hr>
+                                    <div class="row" from-inline>
+                                        <div class="span2">Address :</div>
+                                        <div class="span4">
+                                            {{ profile.address_1 }}
+                                        </div>
+                                    </div><hr>
+                                    <div class="row" from-inline>
+                                        <div class="span2">Phone :</div>
+                                        <div class="span4">
+                                            {{ profile.phone }}
+                                        </div>
+                                    </div><hr>
+                                    <div class="row" from-inline>
+                                        <div class="span2">Mobile:</div>
+                                        <div class="span4">
+                                            {{ profile.mobile }}
+                                        </div>
+                                    </div><hr>
+                                    <div class="row" from-inline>
+                                        <div class="span2">PostCode:</div>
+                                        <div class="span4">
+                                            {{ profile.postcode }}
+                                        </div>
+                                    </div><hr>
+                                </div>
+                                
+                                <div class="row span12 panel-group">
+
+                                    <div class="text-success text-center">
+                                        <h4 class="panel-title">
+                                            Location
+                                        </h4>
+                                    </div>
+                                    <br/>
+
+                                    <div class="row panel-collapse collapse in">
+                                        <div class="span6">
+                                            <div class="row" from-inline>
+                                                <div class="span2">Country:</div>
+                                                <div class="span4">
+                                                    {{ profile.country }}
+                                                </div>
+                                            </div><hr>
+                                            <div class="row" from-inline>
+                                                <div class="span2">Division:</div>
+                                                <div class="span4">
+                                                    {{ profile.division }}
+                                                </div>
+                                            </div><hr>
+
+                                        </div>
+                                        <div class="span6">
+                                            <div class="row" from-inline>
+                                                <div class="span2">District:</div>
+                                                <div class="span4">
+                                                    {{ profile.district }}
+                                                </div>
+                                            </div><hr>
+
+                                            <div class="row" from-inline>
+                                                <div class="span2">Region:</div>
+                                                <div class="span4">
+                                                    {{ profile.region }}
+                                                </div>
+                                            </div><hr>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="row span12">
+                                    <div class="text-success text-center">
+                                        <h4 class="panel-title">
+
+                                            Other Informations
+
+                                        </h4>
+                                    </div>
+                                    <br/>
+
+                                    <div class="row">
+                                        <div class="span6">
+
+                                            <div class="row">
+                                                <div class="span2">Sex:</div>
+                                                <div class="span4">
+                                                    {{ profile.get_sex_display }}
+                                                </div>
+                                            </div><hr>
+                                            <div class="row">
+                                                <div class="span2">Privacy:</div>
+                                                <div class="span4">
+                                                    <input type="checkbox" name="privacy" disabled
+                                                           {% if profile.privacy %}checked{% endif %}/>
+                                                </div>
+                                            </div><hr>
+                                        </div>
+                                        <div class="span6">
+                                            <div class="row" from-inline>
+                                                <div class="span2">Address2:</div>
+                                                <div class="span4">
+                                                    {{ profile.address_2 }}
+                                                </div>
+                                            </div><hr>
+                                            <div class="row" from-inline>
+                                                <div class="span2">Address3:</div>
+                                                <div class="span4">
+                                                    {{ profile.address_3 }}
+                                                </div>
+                                            </div><hr>
+                                            <div class="row" from-inline>
+                                                <div class="span2">Nickname:</div>
+                                                <div class="span4">
+                                                    {{ profile.nickname }}
+                                                </div>
+                                            </div><hr>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </form>
+                    </div>
+                </div>
+                <!--<input type="checkbox" id="apples" value="apples" name="apples" style="display: none;">-->
+                <!--<input type="radio" data-sdb-image="url('/media/images/default/radio.jpg')" />-->
+            </div>
+        </div>
+    </div>
+{% endblock %}
+{% block headextra %}
+    {% css "users/css/user_form.css" %}
+{% endblock %}
+{% block footer_scripts %}
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('input:radio').screwDefaultButtons({
+                width: 85,
+                height: 85
+            })
+        });
+    </script>
+{% endblock %}

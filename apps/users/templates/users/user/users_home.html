@@ -1,0 +1,82 @@
+{% extends "base_listing.html" %}
+{% load js staticfiles %}
+{% block heading %}
+    <h2>View Existing User - Enter Search Criteria</h2>
+{% endblock %}
+
+{% block filters %}
+    {% include 'users/user/users_filter.html' %}
+{% endblock %}
+
+{% block entity_list %}
+    {% include 'users/user/users_list.html' %}
+{% endblock %}
+
+
+{% block headextra %}
+    {% load static %}
+{#    <link rel="stylesheet" href="{% static 'wisys/lib/css/custom_checkbox.css' %}">#}
+    <link rel="stylesheet" href="{% static 'wisys/css/filters.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block footer_scripts %}
+    {% js "users/js/excellentexport.js" %}
+    
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        datatableview.auto_initialize = false;
+        var oTable = datatableview.initialize($('.datatable'));
+
+        var template = new WisysTemplate();
+        template.setEntityName('patients');
+        template.registerEntityCRUDUrls(
+                "{% url 'user-create' %}",
+                "{% url 'user-update' user_id=99 %}",
+                "{% url 'user-delete' user_id=99 %}"
+        );
+        template.enableEntityTableListSingleRowSelection();
+
+
+        function fnFilterColumn(filterNo, columnNo) {
+            return oTable.fnFilter($("#filter-"+filterNo).val(),columnNo);
+        }
+
+        function createFilter(filterNo, columnNo) {
+             return function() { fnFilterColumn(filterNo, columnNo); };
+        }
+
+        var filterColumnArray = [1,4,7,9,8,10];
+        var filterEventArray = ['keyup','keyup','keyup','change','change','keyup'];
+
+        for(var i=0;i<filterColumnArray.length;i++)
+        {
+            var filterNO = i+1;
+            $('#filter-'+filterNO).unbind(filterEventArray[i]).bind(filterEventArray[i], createFilter(filterNO,filterColumnArray[i]));
+        }
+
+
+         $('.nav-toggle').click(function(){
+    			//get collapse content selector
+    			var collapse_content_selector = $(this).attr('href');
+
+    			//make the collapse content to be shown or hide
+    			var toggle_switch = $(this);
+    			$(collapse_content_selector).toggle(function(){
+    			  if($(this).css('display')=='none'){
+                                    //change the button label to be 'Show'
+    				toggle_switch.html('Show Filters');
+    			  }else{
+                                    //change the button label to be 'Hide'
+    				toggle_switch.html('Hide Filters');
+    			  }
+    			});
+    		  });
+
+
+      });
+    </script>
+    {{ block.super }}
+{% endblock %}
+

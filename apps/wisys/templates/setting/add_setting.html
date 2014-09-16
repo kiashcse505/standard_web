@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+  <div class="col-sm-8">
+    {% if form.errors %}
+    <div class="text-danger">Please correct the error{{ form.errors|pluralize }} below.</div>
+    {% endif %}
+    <p>
+    <div class="form-horizontal">
+      <form action="" method="post" role="form">{% csrf_token %}
+
+       {{ form.as_p}}
+          <input type="submit" value="Submit"  />
+      </form>
+    </div>
+  </div>
+{% endblock %}

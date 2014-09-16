@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ context }}
+<div class="view-body">
+    <div class="text-success text-center">
+        <h2>Django Standard Web Portal</h2>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div class="login-container">
+                <section id="login-content">
+                    <form id="login-form" accept-charset="utf-8" method="post" action="{% url 'login' %}">
+                        {% csrf_token %}
+                        <h1>Please Login</h1>
+                        <div>
+                            <input type="text" placeholder="Email / Username" required="" maxlength="254" id="id_username" name="username" />
+                            {# {{ form.username }}#}
+                            {{ form.username.error }}
+                        </div>
+                        <div>
+                            {# {{ form.password }}#}
+                            <input type="password" placeholder="Password" required="" id="id_password" name="password" />
+                            {{ from.password.error }}
+                        </div>
+
+                        <div>
+                            <input type="submit" value="Login" />
+                        </div>
+                    </form><!-- form -->
+                    <div class="button">
+                        <a href="{% url 'username-retrieve' %}">I forgot my username</a> <br/>
+                        <a href="{% url 'password-reset-validate' %}">I forgot my password</a>
+                    </div><!-- button -->
+                    <br />
+
+
+                </section>
+            </div>
+            <hr>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
+
+{% block fromErrorNotifierBlock %}{% endblock %}
+
+{% block headextra %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+
+
+{% endblock %}
+
+

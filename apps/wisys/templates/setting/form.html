@@ -1,0 +1,27 @@
+{% extends "form/single_column_form_base.html" %}
+{% load js staticfiles %}
+
+{% block form_header %}
+    <h3>Site Settings</h3>
+{% endblock %}
+
+{% block single_column_form_block %}
+    {% include 'form/main_logos/row_photo.html' with  row_field=form.logo_image row_field_errors=form.logo_image.errors  %}
+
+{% endblock %}
+
+
+{% block submitBtnText %}Update{% endblock %}
+
+{% block headextra %}
+{% css "jasny-bootstrap/dist/css/jasny-bootstrap.min.css" %}
+{% endblock %}
+{% block footer_scripts %}
+{% js "jasny-bootstrap/dist/js/jasny-bootstrap.min.js" %}
+    <script type="text/javascript">
+         $(document).ready(function(){
+
+               template.registerEntityListingUrl("{% url 'system-settings' %}");
+          });
+    </script>
+{% endblock %}

@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load js staticfiles %}
+
+{% block content %}
+    <div class="view-body">
+        <div class="text-success text-center">
+            {% block heading %}{% endblock %}
+            <hr>
+        </div>
+        <div class='clearfix'></div>
+        <div class="row">
+            {% block filters %}{% endblock %}
+        </div>
+        <div class='clearfix'></div>
+        <div class="row">
+            {% block entity_list %}{% endblock %}
+        </div>
+    </div>
+
+    <div class='clearfix'></div>
+
+
+{% endblock %}
+
+{% block headextra %}
+    <link rel="stylesheet" href="{% static 'wisys/css/dt_bootstrap_extend.css' %}">
+    <link rel="stylesheet" href="{% static 'wisys/lib/css/dt_bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'wisys/css/datatable_extra.css' %}">
+    <link href="{%  static 'x-editable/dist/bootstrap-editable/css/bootstrap-editable.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+<script type='text/javascript'>
+    $(document).ready(function(){
+        {% block pageReadyScripts %}
+        {% endblock %}
+    });
+</script>
+
+{% block footer_scripts %}
+    <script type="text/javascript" src="{% static 'datatables/media/js/jquery.dataTables.js' %}"></script>
+    <script type="text/javascript" src="{% static 'django-datatable-view/datatableview/static/js/datatableview.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'wisys/lib/js/dt_bootstrap.js' %}"></script>
+    <script src="{%  static 'x-editable/dist/bootstrap-editable/js/bootstrap-editable.min.js' %}"></script>
+
+    <script type='text/javascript'>
+        $(document).ready(function(){
+            $(".datatable").removeClass('table-striped')
+                           .addClass('table-hover');
+        });
+    </script>
+{% endblock %}

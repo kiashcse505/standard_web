@@ -1,0 +1,16 @@
+{% autoescape off %}
+Dear User,
+<br />
+<br />
+<p>
+    You have made a request for a password reset for <b>{{ user.username }}</b> on the Tele-healthcare web portal
+    on {{ user.date_joined|date:"M d, Y"  }} at {{ user.date_joined|date:"H:i:s"  }}.
+</p>
+<p>
+    <a href="{{ protocol}}://{{ domain }}{% url 'password-reset-request' uid token %}">Click here</a> to validate your email address and automatically request a password reset.
+</p>
+
+
+Kind regards<br />
+The Support Team
+{% endautoescape %}

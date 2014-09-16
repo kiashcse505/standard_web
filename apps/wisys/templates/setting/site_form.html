@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+	<div class="span12">
+        <div class="text-success text-center">
+                <h2>Change Domain</h2>
+            <hr>
+        </div>
+        {% if form.errors %}
+            <div class="row">
+                <div class="text-success text-center">
+                    {% for aField in form.non_field_error %}
+                       <span class="text-error">{{ aField.errors }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="offset3">
+          <form action="." method="POST" id="entity-update-form">{% csrf_token %}
+                <div class="row">
+                    <div class="span2">Domain Name</div>
+                    <div class="span6">
+                        {{ form.domain }}
+                        {{ form.domain.errors }}
+                    </div>
+                </div>
+                 <div class="row">
+                    <div class="span2">Display Name</div>
+                    <div class="span6">
+                        {{ form.name }}
+                        {{ form.name.errors }}
+                    </div>
+                </div>
+
+                <div class="row control-group">
+                    <div class="span2">&nbsp;</div>
+                    <div class="span3 controls">
+                            <input type="submit" value="Update" class="btn btn-success" />
+
+                    </div>
+                </div>
+          </form>
+        </div>
+   </div>
+</div>
+{% endblock %}

@@ -1,0 +1,41 @@
+{% extends "base_listing.html" %}
+
+{% block heading %}
+    <h2>View Existing Worker - Enter Search Criteria</h2>
+{% endblock %}
+
+{% block filters %}
+    {% include 'users/worker/workers_filter.html' %}
+{% endblock %}
+
+{% block entity_list %}
+    {% include 'users/worker/workers_list.html' %}
+{% endblock %}
+
+
+{% block headextra %}
+    {% load static %}
+{#    <link rel="stylesheet" href="{% static 'wisys/lib/css/custom_checkbox.css' %}">#}
+    <link rel="stylesheet" href="{% static 'wisys/css/filters.css' %}">
+    {{ block.super }}
+{% endblock %}
+
+{% block footer_scripts %}
+    <script type="text/javascript">
+      $(document).ready(function(){
+
+        var template = new WisysTemplate();
+        template.setEntityName('patients');
+        template.registerEntityCRUDUrls(
+
+
+        );
+        template.enableEntityTableListSingleRowSelection();
+
+
+      });
+    </script>
+    {{ block.super }}
+    <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap-editable/js/bootstrap-editable.min.js"></script>
+{% endblock %}
+

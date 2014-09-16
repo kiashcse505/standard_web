@@ -1,0 +1,26 @@
+{
+  "name": "mHealth",
+  "version": "0.0.1",
+  "dependencies": {
+    "bootstrap": "bootstrap#2.3.2",
+	"jquery-ui": "jquery-ui#*",
+    "jquery": "1.9.1",
+    "bootstrap-datetimepicker": "bootstrap-datetimepicker#*",
+    "datatables": "datatables#*",
+    "noty": "noty#*",
+    "Messi": "https://github.com/ibrahim12/Messi.git#*",
+    "zoomooz":  "zoomooz#*",
+    "highcharts" : "highcharts#*",
+	"screwdefaultbuttons" : "screwdefaultbuttons#*",
+    "powertip" : "https://github.com/ibrahim12/jquery-powertip.git#release",
+    "django-messages" : "https://github.com/atkinson/jquery-django-messages.git",
+    "x-editable" : "https://github.com/vitalets/x-editable.git#1.5.0"
+
+  }
+}
+
+
+
+
+
+

@@ -1,0 +1,39 @@
+{% extends "form/base.html" %}
+
+{% block html_form_elements %}
+    <div class="row span12 panel-group">
+        <div class="row panel-collapse collapse in">
+
+                <div class="span12">
+                    {% block vertical_row %}{% endblock %}
+                </div>
+        </div>
+        <div class="row panel-collapse collapse in">
+            <div class="span6">
+            {% block two_column_form_left_column_block %}{% endblock two_column_form_left_column_block %}
+            </div>
+            <div class="span6">
+                {% block two_column_form_right_column_block %}{% endblock two_column_form_right_column_block %}
+            </div>
+        </div>
+        <div class="row panel-collapse collapse in">
+            <hr>
+            <div class="span6">
+            {% block two_column_form_left1_column_block %}{% endblock two_column_form_left1_column_block %}
+            </div>
+            <div class="span6">
+                {% block two_column_form_right1_column_block %}{% endblock two_column_form_right1_column_block %}
+            </div>
+        </div>
+        <div class="row panel-collapse collapse in">
+            <hr>
+            <div class="span6">
+            {% block two_column_form_left2_column_block %}{% endblock two_column_form_left2_column_block %}
+            </div>
+            <div class="span6">
+                {% block two_column_form_right2_column_block %}{% endblock two_column_form_right2_column_block %}
+            </div>
+        </div>
+
+    </div>
+{% endblock %}

@@ -1,0 +1,21 @@
+ <div class="view-body">
+     <div class="row">
+         <div class="span12">
+             {% block html_form_block %}
+                 <form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+                    {% block html_form_elements %}
+                    {% endblock %}
+                 </form>
+             {% endblock %}
+         </div>
+        {% block form_buttons %}
+            <div class="row control-group" >
+                <div class="span2">&nbsp;</div>
+                <div class="span3 offset3 controls">
+                    <input type="button"  class="btn btn-success entity-submit-btn"  value="{% if form.instance.id  %} Update {% else %} Add {% endif %}">
+                    <input type="button"  class="btn btn-danger entity-cancel-btn"  value="Cancel">
+                </div>
+            </div>
+        {% endblock %}
+     </div>
+ </div>

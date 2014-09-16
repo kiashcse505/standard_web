@@ -1,0 +1,36 @@
+{% load static %}
+{% load js %}
+{% load url from future %}
+
+
+{% if not noHeaderFooter %}
+<script type="text/javascript" src="{% static 'jquery/jquery.min.js' %}"></script>
+{% endif %}
+
+
+<script type="text/javascript" src="{%  static 'noty/js/noty/packaged/jquery.noty.packaged.min.js' %}"></script>
+
+
+
+<script type="text/javascript" src="{% static 'dajax/jquery.dajax.core.js' %}"></script>
+
+{% if not noHeaderFooter %}
+<script type="text/javascript" src="{% static 'bootstrap/docs/assets/js/bootstrap.min.js' %}"></script>
+{% endif %}
+<script type="text/javascript" src="{% static 'wisys/lib/js/bootstrap-datetimepicker.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'wisys/js/javascript.extend.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'wisys/js/utils.js' %}"></script>
+<script type="text/javascript" src="{% static 'wisys/js/common.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'wisys/js/default_configs.js' %}"></script>
+
+<script type="text/javascript" src="{% static 'Messi/messi.js' %}"></script>
+
+
+
+
+{#<script type="text/javascript" src="{% static 'jquery.cookie/jquery.cookie.js' %}"></script>#}
+
+

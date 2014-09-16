@@ -1,0 +1,287 @@
+    {% extends "base.html" %}
+    {% load js staticfiles %}
+    {% block content %}
+    <div class="row">
+        <div class="span12">
+        {% if form.errors %}
+                <div class="offset3">
+                    <div class="row">
+                        <div class="span6 alert alert-error">
+                            {{ form2.non_field_errors }}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+            <div class="text-success text-center">
+                {% if form2.instance.id  %}
+                    <h2>Update User</h2>
+                {% else %}
+                    <h2>Add User</h2>
+                {% endif %}
+
+                <hr>
+            <div class="offset3">
+                {% if form1.errors %}
+                <h4>Invalid data. Please try again.</h4>
+                {% endif %}
+              </div>
+            </div>
+             <div class="view-body" style="margin-left:30px;">
+                 <div class="row">
+                     <div id="search-result" class="span12">
+                        <form action="." method="POST" enctype="multipart/form-data">{% csrf_token %}
+                            <!--<div id="patient-info" class="row">-->
+                                    <!--<div style="height: auto" class="span6">-->
+                                        <!--<h4>Login Information </h4><br /><br />-->
+
+
+                                            <!--<div class="row" from-inline>-->
+                                                    <!--<div class="span2">Username:</div>-->
+                                                    <!--<div class="span4">-->
+                                                        <!--{{ form1.username }}-->
+                                                        <!--{{ form1.username.errors }}-->
+                                                    <!--</div>-->
+                                             <!--</div>-->
+                                        <!--<div class="row" from-inline>-->
+                                                    <!--<div class="span2">Email:</div>-->
+                                                    <!--<div class="span4">-->
+                                                        <!--{{ form1.email }}-->
+                                                        <!--{{ form1.email.errors }}-->
+                                                    <!--</div>-->
+                                             <!--</div>-->
+                                        <!--<div class="row" from-inline>-->
+                                                    <!--<div class="span2">Password:</div>-->
+                                                    <!--<div class="span4">-->
+                                                        <!--{{ form1.password1 }}-->
+                                                        <!--{{ form1.password1.errors }}-->
+                                                    <!--</div>-->
+                                             <!--</div>-->
+                                        <!--<div class="row" from-inline>-->
+                                                    <!--<div class="span2">Password Confirmation:</div>-->
+                                                    <!--<div class="span4">-->
+                                                        <!--{{ form1.password2 }}-->
+                                                        <!--{{ form1.password2.errors }}-->
+                                                    <!--</div>-->
+                                             <!--</div>-->
+                                        <!--&lt;!&ndash;<div class="row" from-inline>&ndash;&gt;-->
+                                                                <!--&lt;!&ndash;<div class="span2">Select Group:</div>&ndash;&gt;-->
+                                                                <!--&lt;!&ndash;<div class="span4">&ndash;&gt;-->
+                                                                    <!--&lt;!&ndash;{{ form1.groups }}&ndash;&gt;-->
+                                                                    <!--&lt;!&ndash;{{ form1.groups.errors }}&ndash;&gt;-->
+                                                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                                       <!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+
+
+                                   <!--</div>-->
+                                   <!--<div class="span6">-->
+                                       <!--<h4>User Required Field</h4><br /><br />-->
+                                              <!--<div class="row" from-inline>-->
+                                                        <!--<div class="span2">Surname:</div>-->
+                                                        <!--<div class="span4">-->
+                                                            <!--{{ form2.surname }}-->
+                                                            <!--{{ form2.surname.errors }}-->
+                                                        <!--</div>-->
+                                               <!--</div>-->
+                                              <!--<div class="row" from-inline>-->
+                                                        <!--<div class="span2">Salutation:</div>-->
+                                                        <!--<div class="span4">-->
+                                                            <!--{{ form2.salutation }}-->
+                                                            <!--{{ form2.salutation.errors }}-->
+                                                        <!--</div>-->
+                                               <!--</div>-->
+                                              <!--<div class="row" from-inline>-->
+                                                                <!--<div class="span2">Birthday:</div>-->
+                                                                  <!--<div class="span4">-->
+                                                                      <!--<div class="input-append date">-->
+                                                                       <!--{{ form2.birthdate}}-->
+                                                                        <!--<span class="add-on">-->
+                                                                          <!--<i data-time-icon="icon-time" data-date-icon="icon-calendar">-->
+                                                                          <!--</i>-->
+                                                                        <!--</span>-->
+                                                                      <!--</div>-->
+                                                                      <!--{{ form2.birthdate.errors }}-->
+                                                                  <!--</div>-->
+                                               <!--</div>-->
+
+
+                                              <!--<div class="row" from-inline>-->
+                                                        <!--<div class="span2">Address :</div>-->
+                                                        <!--<div class="span4">-->
+                                                            <!--{{ form2.address_1 }}-->
+                                                            <!--{{ form2.address_1.errors }}-->
+                                                        <!--</div>-->
+                                               <!--</div>-->
+                                              <!--<div class="row" from-inline>-->
+                                                        <!--<div class="span2">Phone :</div>-->
+                                                        <!--<div class="span4">-->
+                                                            <!--{{ form2.phone }}-->
+                                                            <!--{{ form2.phone.errors }}-->
+                                                        <!--</div>-->
+                                               <!--</div>-->
+                                              <!--<div class="row" from-inline>-->
+                                                        <!--<div class="span2">Mobile:</div>-->
+                                                        <!--<div class="span4">-->
+                                                            <!--{{ form2.mobile }}-->
+                                                            <!--{{ form2.mobile.errors }}-->
+                                                        <!--</div>-->
+                                               <!--</div>-->
+                                              <!--<div class="row" from-inline>-->
+                                                        <!--<div class="span2">PostCode:</div>-->
+                                                        <!--<div class="span4">-->
+                                                            <!--{{ form2.postcode }}-->
+                                                            <!--{{ form2.postcode.errors }}-->
+                                                        <!--</div>-->
+                                               <!--</div>-->
+                                   <!--</div>-->
+                                   <!--<div class="row span12 panel-group">-->
+                                       <!--<div class="text-success text-center">-->
+                                               <!--<h4 class="panel-title">-->
+                                                          <!--GEO Location-->
+                                                      <!--</h4>-->
+                                            <!--</div><br />-->
+                                       <!--<div class="row panel-collapse collapse in">-->
+                                                <!--<div class="span6">-->
+
+                                                    <!--<div class="row" from-inline>-->
+                                                                <!--<div class="span2">Country:</div>-->
+                                                                <!--<div class="span4">-->
+                                                                    <!--{{ form2.country }}-->
+                                                                    <!--{{ form2.country.errors }}-->
+                                                                <!--</div>-->
+                                                       <!--</div>-->
+                                                     <!--<div class="row" from-inline>-->
+                                                                <!--<div class="span2">Division:</div>-->
+                                                                <!--<div class="span4">-->
+                                                                    <!--{{ form2.division }}-->
+                                                                    <!--{{ form2.division.errors }}-->
+                                                                    <!--&lt;!&ndash;<select id="id_division" onchange="" size="1"></select>&ndash;&gt;-->
+                                                                <!--</div>-->
+                                                       <!--</div>-->
+
+                                                    <!--</div>-->
+                                               <!--<div class="span6">-->
+                                                   <!--<div class="row" from-inline>-->
+                                                                <!--<div class="span2">District:</div>-->
+                                                                <!--<div class="span4">-->
+                                                                    <!--{{ form2.district }}-->
+                                                                    <!--{{ form2.district.errors }}-->
+                                                                     <!--&lt;!&ndash;<select id="id_district" onchange="" size="1"></select>&ndash;&gt;-->
+                                                                <!--</div>-->
+                                                       <!--</div>-->
+
+                                                   <!--<div class="row" from-inline>-->
+                                                                <!--<div class="span2">Region:</div>-->
+                                                                <!--<div class="span4">-->
+                                                                    <!--{{ form2.region }}-->
+                                                                    <!--{{ form2.region.errors }}-->
+                                                                    <!--&lt;!&ndash;<select id="id_region" onchange="" size="1"></select>&ndash;&gt;-->
+                                                                <!--</div>-->
+                                                       <!--</div>-->
+
+                                                <!--</div>-->
+                                        <!--</div>-->
+
+                                   <!--</div>-->
+
+                                   <!--<div class="row span12 panel-group" id="accordion">-->
+                                       <!--<hr>-->
+                                       <!--<div class="text-success text-center">-->
+                                               <!--<h4 class="panel-title">-->
+                                                        <!--<a data-toggle="collapse" data-parent="#accordion" href="#collapseOne">-->
+                                                          <!--Optional Informations-->
+                                                        <!--</a>-->
+                                                      <!--</h4>-->
+                                            <!--</div><br />-->
+                                       <!--<div class="row panel-collapse collapse" id="collapseOne" >-->
+                                                <!--<div class="span6">-->
+                                                    <!--<div class="row" from-inline>-->
+                                                        <!--<div class="span2">Privacy: </div>-->
+                                                        <!--<div class="span4">-->
+                                                           <!--{{ form2.privacy }}-->
+                                                           <!--{{ form2.privacy.errors }}-->
+                                                        <!--</div>-->
+
+                                                    <!--</div>-->
+
+                                                    <!--<div class="row" from-inline>-->
+                                                                <!--<div class="span2">Sex:</div>-->
+                                                                <!--<div class="span4">-->
+                                                                    <!--{{ form2.sex }}-->
+                                                                    <!--{{ form2.sex.errors }}-->
+                                                                <!--</div>-->
+                                                       <!--</div>-->
+
+                                                    <!--<div class="row" from-inline>-->
+                                                                <!--<div class="span2">Photo:</div>-->
+                                                                <!--<div class="span4">-->
+                                                                    <!--{{ form2.photo }}-->
+                                                                    <!--{{ form2.photo.errors }}-->
+                                                                <!--</div>-->
+                                                       <!--</div>-->
+
+
+                                                    <!--</div>-->
+                                               <!--<div class="span6">-->
+                                                    <!--<div class="row" from-inline>-->
+                                                                <!--<div class="span2">Address2:</div>-->
+                                                                <!--<div class="span4">-->
+                                                                    <!--{{ form2.address_2 }}-->
+                                                                    <!--{{ form2.address_2.errors }}-->
+                                                                <!--</div>-->
+                                                       <!--</div>-->
+                                                   <!--<div class="row" from-inline>-->
+                                                                <!--<div class="span2">Address3:</div>-->
+                                                                <!--<div class="span4">-->
+                                                                    <!--{{ form2.address_3 }}-->
+                                                                    <!--{{ form2.address_3.errors }}-->
+                                                                <!--</div>-->
+                                                       <!--</div>-->
+                                                   <!--<div class="row" from-inline>-->
+                                                                <!--<div class="span2">Nickname:</div>-->
+                                                                <!--<div class="span4">-->
+                                                                    <!--{{ form2.nickname }}-->
+                                                                    <!--{{ form2.nickname.errors }}-->
+                                                                <!--</div>-->
+                                                       <!--</div>-->
+
+
+                                                <!--</div>-->
+                                        <!--</div>-->
+
+                                   <!--</div>-->
+                        {{form1.as_p}}
+                        {{ form2.as_p }}
+                                     <div class="row control-group" style="margin-left:260px;">
+                                        <div class="span2">&nbsp;</div>
+                                        <div class="span3 controls">
+
+                                           <input type="submit" class="btn btn-primary" value="Submit">
+                                        </div>
+                                    </div>
+                                </div>
+
+                         </form>
+                     </div>
+                 </div>
+             </div>
+       </div>
+    </div>
+    {% endblock %}
+    {% block footer_scripts %}
+         {% load dajaxice_templatetags %}
+         {% dajaxice_js_import %}
+        {% css "prms/css/select2.css" %}
+        {% js "prms/js/select2.js" %}
+        <script type="text/javascript">
+          $(document).ready(function(){
+            $('.date').datetimepicker({
+                  pickTime: false
+            });
+            $("#s2id_e2_2").select2({
+            placeholder: "Select Lead Clinicians"
+            });
+
+          });
+        </script>
+    {% endblock %}

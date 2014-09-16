@@ -1,0 +1,33 @@
+{% extends "form/base.html" %}
+
+{% block html_form_elements %}
+    <div class="row span12">
+        {% block four_column_form_block_header_container %}
+            <div class="text-success text-center">
+                <h4 class="panel-title">{% block four_column_form_block_header %}{% endblock %}</h4>
+            </div>
+            <br/>
+        {% endblock %}
+
+
+        <div class="row form-element-container-selector" data-row='1' >
+            <div class="span3">
+                {% block four_column_form_first_block %}{% endblock %}
+            </div>
+            <div class="span3">
+                {% block four_column_form_second_block %}{% endblock %}
+            </div>
+            <div class="span3">
+                {% block four_column_form_third_block %}{% endblock %}
+            </div>
+            <div class="span3">
+                {% block four_column_form_fourth_block %}{% endblock %}
+            </div>
+        </div>
+
+
+
+
+
+    </div>
+{% endblock %}

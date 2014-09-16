@@ -1,0 +1,14 @@
+
+.datatable tr.row-selected td{
+    background-color: #c5dbec !important;
+}
+
+.datatable td.sorting_1,
+.table-striped tbody > tr:nth-child(odd) > td.sorting_1{
+    background-color: #d5ffd5;
+}
+
+.datatable thead th{
+    padding-right: 25px !important;
+    text-align: center;
+}

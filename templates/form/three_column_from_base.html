@@ -1,0 +1,21 @@
+{% extends "form/base.html" %}
+
+{% block html_form_elements %}
+    <div class="row span12 panel-group">
+        <div class="text-success text-center">
+            <h4 class="panel-title">{% block three_column_form_block_header %}{% endblock %}</h4>
+        </div>
+        <br/>
+        <div class="row panel-collapse collapse in">
+            <div class="span4">
+                {% block three_column_form_left_column_block %}{% endblock %}
+            </div>
+            <div class="span4">
+                {% block three_column_form_middle_column_block %}{% endblock %}
+            </div>
+        <div class="span4">
+                {% block three_column_form_right_column_block %}{% endblock %}
+            </div>
+        </div>
+    </div>
+{% endblock %}

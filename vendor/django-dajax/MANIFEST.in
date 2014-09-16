@@ -1,0 +1,7 @@
+include *.py
+include COPYING
+include AUTHORS
+recursive-include dajax *
+recursive-exclude dajax *.pyc
+recursive-include docs *
+prune docs/_build

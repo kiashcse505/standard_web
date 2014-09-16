@@ -1,0 +1,16 @@
+{% extends "form/base.html" %}
+
+{% block html_form_elements %}
+    <div class="row span10 panel-group offset2">
+        {% block single_column_form_block %}{% endblock %}
+{#        <div class="text-success text-center">#}
+{#            <h4 class="panel-title">{% block single_column_form_block_header %}{% endblock %}</h4>#}
+{#        </div>#}
+{#        <br/>#}
+{#        <div class="row panel-collapse collapse in">#}
+{#            <div class="span12 text-center">#}
+{#                #}
+{#            </div>#}
+{#        </div>#}
+    </div>
+{% endblock %}

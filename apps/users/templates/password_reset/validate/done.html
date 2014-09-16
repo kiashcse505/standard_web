@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {{ context }}
+  <div class="view-body">
+    <div class="text-success text-center">
+        <h2>Telehealth Clinical Portal</h2>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div class="row text-center">
+                <h4>Password Reset Request</h4>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="text-center alert alert-success">
+                    <p>We've emailed you instructions for setting your password to the email address you submitted. You should be receiving it shortly.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+  <a href="/">Back to login page</a>
+  </div>
+
+{% endblock %}

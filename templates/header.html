@@ -1,0 +1,83 @@
+{% load tags %}
+
+<div class="row">
+    <div class="span12">
+        <div id="banner-div" class="row form-inline">
+            <div id="bt-logo-div" class="span3">
+                <img src="{{ MEDIA_URL }}{%  logo_url %}" id="bt-logo">
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% if request.user.is_authenticated  %}
+<div class="row">
+    <div class="navbar">
+        <div class="navbar-inner">
+            <ul class="nav">
+               <li class="dropdown">
+                    <a href="javascript: window.history.back();">
+                        <<
+                    </a>
+               </li>
+               <li class="dropdown {% active request 'home' %}">
+                    <a href="{% url 'home' %}">
+                        Home
+                    </a>
+               </li>
+                <li class="divider-vertical"></li>
+             
+
+                <li class="dropdown {% active request 'user-home' %} {% active request 'permission-list' %} {% active request 'user-create' %}">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        Users
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="{% active request 'user-home' %}"><a href="{% url 'user-home' %}">Manage</a></li>
+                        <li class="{% active request 'permission-list' %}"><a href="{% url 'permission-list' %}">Manage
+                            Permissions</a></li>
+{#                    {% if perms.Groups %}<li class="{% active request 'permission-list' %}"><a href="{% url 'permission-list' %}">Manage#}
+{#                            Permissions</a></li> {% else %} {% endif %}#}
+                        <li class="{% active request 'user-create' %}"><a href="{% url 'user-create' %}">Add User</a></li>
+                    </ul>
+                </li>
+                {% if user.is_superuser %}
+                <li class="dropdown {% active request 'system-settings' %}">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        Settings
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="{% active request 'system-settings' %}"><a href="{% url 'system-settings' %}">Settings Logo</a></li>
+                        <li class="{% active request 'domain-list' %}"><a href="{% url 'domain-list' %}">Settings Domain</a></li>
+                    </ul>
+                </li>
+                <li class="divider-vertical"></li>
+                {% endif %}
+            </ul>
+            <ul class="nav pull-right">
+                <li class="divider-vertical"></li>
+                {% if request.user.is_anonymous %}
+                    <li class=""><a href="{%  url 'login' %}">Login</a></li>
+                {% else %}
+                <li class="dropdown">
+                    <a data-toggle="dropdown" class="dropdown-toggle" href="#">
+                        {{ request.user.username }}
+                        <b class="caret"></b>
+                    </a>
+                    <ul class="dropdown-menu">
+                        <li class="{% active request 'user-home' %}"><a
+                                href="{% url 'users-detail' request.user.id %}">Profile</a></li>
+                        <li class="{% active request 'logout' %}"><a href="{% url 'logout' %}">Logout</a></li>
+                    </ul>
+
+                    </li>
+
+                {% endif %}
+            </ul>
+        </div>
+    </div>
+</div>
+{% endif %}

@@ -1,0 +1,112 @@
+{% extends "form/base.html" %}
+
+{% block html_form_elements %}
+    <div class="row">
+            <div class="row no-left-margin">
+                <div class="span5">
+                    <fieldset>
+                         <legend class="text-info">
+                             <h5>{% block two_column_form_care_path_span5_header %}{% endblock %}</h5>
+                         </legend>
+                        <div class="row" style="border:2px solid gray;">
+                             <div class="span2 no-left-margin text-center patinet-detail-photo">
+                                   {% block two_column_form_care_path_span5_image %}{% endblock %}
+                             </div>
+                             <div class="pull-right span3 no-left-margin patient-detail-info-div">
+                                 <div class="span3 no-left-margin">
+                                     {% block two_column_form_care_path_detail_info_row %}{% endblock %}
+                                      <div class="disease-{{ a_condition_slug }}">
+                                        {% block two_column_form_care_path_detail_disease_row %}{% endblock %}
+                                      </div>
+                                 </div>
+                             </div>
+                        </div>
+
+                    </fieldset>
+
+                </div>
+
+                        <div class="span7">
+                            <legend class="text-info">
+                                <div class="row">
+                                     <h5 class="span2 text-left">{% block two_column_form_care_path_span7_header %}{% endblock %}</h5> <h5 class="text-right">{% block two_column_form_care_path_span7_date %}{% endblock %}</h5>
+                                </div>
+                            </legend>
+                            <div>
+                                <div class="span7"  style="border:2px solid gray;">
+                                    <ul class="nav nav-tabs">
+                                        <li class="active"><a data-toggle="tab" href="#diabetes">CMD Diabetes</a></li>
+                                        <li class=""><a data-toggle="tab" href="#heart-coronary">CMD Heart & Coronary</a></li>
+                                        <li class=""><a data-toggle="tab" href="#respiratory">CMD Respiratory</a></li>
+                                    </ul>
+
+                                    <div class="tab-content">
+                                        <div id="diabetes" class="tab-pane active">
+                                            <div class="row no-left-margin">
+                                                <div class="no-left-margin span7" id="blood-glucose">
+                                                    <div class="row">
+                                                        <div class="span3  patient-detail-info-div">
+                                                            {% block two_column_form_care_path_span3_row_detail %}{% endblock %}
+
+                                                         </div>
+                                                        <div class="span4">
+                                                            <div class="span3  patient-detail-info-div">
+                                                            {% block two_column_form_care_path_span4_row_detail %}{% endblock %}
+                                                            </div>
+                                                         </div>
+
+                                                    </div>
+                                                <div class="row">
+                                                        <div class="span3  patient-detail-info-div">
+                                                            {% block two_column_form_care_path_span3_row_view %}{% endblock %}
+
+                                                         </div>
+                                                        <div class="span4">
+                                                            <div class="span3  patient-detail-info-div">
+                                                            {% block two_column_form_care_path_span4_row_reveal %}{% endblock %}
+                                                            </div>
+                                                         </div>
+
+                                                    </div>
+
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div id="heart-coronary" class="tab-pane">
+                                            <div class="row no-left-margin">
+                                                <div class="no-left-margin span7" id="blood-oxygen"></div>
+                                            </div>
+                                    </div>
+                                    <div id="respiratory-stat" class="tab-pane">
+                                            <div class="row no-left-margin">
+                                                <div class="no-left-margin span7" id="cholesterol"></div>
+                                            </div>
+                                    </div>
+
+                                </div>
+                            </div>
+
+                        </div>
+
+
+            </div>
+        <div class="row">
+            {% block two_column_form_care_path_graph %}{% endblock %}
+        </div>
+        <div class="row">
+            {% block two_column_form_care_path_table %}{% endblock %}
+        </div>
+
+        <div class="span12">
+
+            <div class="controls pull-right">
+                <button id="add-btn" class="btn btn-success">Message Patient</button>
+                <button id="edit-btn" class="btn btn-warning">Message User</button>
+            </div>
+            <div class="row span12">
+            {% block two_column_form_care_path_message_patient %}{% endblock %}
+        </div>
+        </div>
+    </div>
+{% endblock %}

@@ -1,0 +1,104 @@
+<div class="row">
+    <div class="span6">
+        <div class="pull-left">
+            <ul class='inline'>
+                <!--<li>-->
+                <!--<label for="my-patient-filter" class="radio">-->
+                <!--<input id="my-patient-filter" type="radio" name='patient-filter' value="my" > My User-->
+                <!--</label>-->
+                <!--</li>-->
+                <!--<li>-->
+                <!--<label for="all-patient-filter" class="radio">-->
+                <!--<input id="all-patient-filter" type="radio" name='patient-filter' value="my" > All User-->
+                <!--</label>-->
+                <!--</li>-->
+            </ul>
+        </div>
+    </div>
+    <section class="round-border">
+        <div class="span6">
+            <button id="filter-switch" data-value="Filters" type="button" href="#collapse1"
+                    class="btn nav-toggle btn-small pull-right">
+                Show Filters
+            </button>
+        </div>
+</div>
+<div id="collapse1" style="display:none" class="row span12">
+    <div>
+        <div class="span12 row text-center">
+            <label></label>
+
+            <div class="span12 row">
+                <div class="span10 row text-center">
+                    <span class="span2">User ID</span>
+                    <input id="filter-1" type="text" class="input-xxlarge" placeholder="User Id">
+                </div>
+            </div>
+        </div>
+        <div class="span12 row text-center">
+            <label></label>
+
+            <div class="span12 row">
+                <div class="span10 row text-center">
+                    <span class="span2">Last Name</span>
+                    <input id="filter-2" type="text" class="input-xxlarge" placeholder="Last Name">
+                </div>
+            </div>
+        </div>
+        <div class="span12 row text-center">
+            <label></label>
+
+            <div class="span12 row">
+                <div class="span10 row text-center">
+                    <span class="span2">Address</span>
+                    <input id="filter-3" type="text" class="input-xxlarge" placeholder="Address">
+                </div>
+            </div>
+        </div>
+        <div class="span12 row text-center">
+            <label></label>
+
+            <div class="span12 row">
+                <div class="span10 row text-center">
+                    <span class="span2">Country</span>
+                    <select id="filter-4" class="input-xxlarge">
+                        <option value=""></option>
+                        {% for k in all_country %}
+                            <option value="{{ k.name }}">{{ k.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="span12 row text-center">
+            <label></label>
+
+            <div class="span12 row">
+                <div class="span10 row text-center">
+                    <span class="span2">District</span>
+                    <select id="filter-5" class="input-xxlarge">
+                        <option value=""></option>
+                        {% for k in all_district %}
+                            <option value="{{ k.name }}">{{ k.name }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="span12 row text-center">
+            <label></label>
+
+            <div class="span12 row">
+                <div class="span10 row text-center">
+                    <span class="span2">PostCode</span>
+                    <input id="filter-6" type="text" class="input-xxlarge" placeholder="PostCode">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+</section>
+
+

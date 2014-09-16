@@ -1,0 +1,8 @@
+{% block form_header_block %}
+    <div class="text-success text-center">
+        {% block form_header %}
+            <h2>{% if form.instance.id  %} Update {% else %} Add {% endif %}</h2> {% block header_text %}{% endblock %}
+        {% endblock %}
+        <hr>
+    </div>
+{% endblock %}

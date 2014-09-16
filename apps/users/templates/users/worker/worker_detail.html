@@ -1,0 +1,214 @@
+{% extends "base_modal.html" %}
+
+{% block heading %}
+    <h2>Alerts Summary</h2>
+{% endblock %}
+
+{% block content %}
+    <div class="modal-content alert-modal">
+        <div class="row span9">
+            <div class="span5">
+                <div class="row text-success">
+                    <h4> Patient Details</h4>
+                </div>
+                <div class="row">
+                    <div class="span2"><b>ID</b></div>
+                    <div class="span2">{{ object.patient.id }}</div>
+                </div>
+                <div class="row">
+                    <div class="span2"><b>Name</b></div>
+                    <div class="span2">{{ object.patient.name }}</div>
+                </div>
+                <div class="row">
+                    <div class="span2"><b>Sex</b></div>
+                    <div class="span2">{{ object.patient.get_sex_display }}</div>
+                </div>
+                <div class="row">
+                    <div class="span2"><b>Contact</b></div>
+                    <div class="span2">{{ object.patient.contact_number }}</div>
+                </div>
+                <div class="row">
+                    <div class="span2"><b>Address</b></div>
+                    <div class="span2">{{ object.patient.address|truncatewords:10 }}</div>
+                </div>
+            </div>
+            <div class="span3">
+                <div class="row text-success">
+                    <h4> HCW Details</h4>
+                </div>
+                 {% for aHealthcareWorker in object.patient.healthcare_workers.all|slice:"1"  %}
+                <div class="row">
+                    <div class="span1"><b>ID</b></div>
+                    <div class="span2">{{ aHealthcareWorker.id }}</div>
+                </div>
+                <div class="row">
+                    <div class="span1"><b>Name</b></div>
+                    <div class="span2">{{ aHealthcareWorker.first_name }}</div>
+                </div>
+                {% endfor %}
+                <hr />
+                <div class="row text-success">
+                    <h4> Lead Clinicians Details</h4>
+                </div>
+                <div class="row">
+                    <div class="span1"><b>ID</b></div>
+                    <div class="span2">{{ object.patient.lead_clinician.id }}</div>
+                </div>
+                <div class="row">
+                    <div class="span1"><b>Name</b></div>
+                    <div class="span2">{{  object.patient.lead_clinician.profile }}</div>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+            <hr />
+
+            <div class="row span9">
+                <div class="text-success">
+                    <h4 class="panel-title text-center">
+                        Alert Details
+                    </h4>
+                </div><br>
+                <div>
+                    <div class="row">
+                        <div class="span2"><b>Alert ID</b></div>
+                        <div class="span2"><b>Creation Time</b></div>
+                        <div class="span2"><b>Priority </b></div>
+                        <div class="span2"><b>Created By</b></div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="span2"> {{ object.id }}</div>
+                        <div class="span2"> {{ object.created_at }}</div>
+                        <div class="span2"> {{ object.get_priority_display }}</div>
+                        <div class="span2"> {{ object.created_by }}</div>
+                    </div>
+
+                    <hr />
+                    <div class="row text-center">
+                        {{ object.content }}
+                    </div>
+                    <hr />
+                    <div class="row">
+                        <div class="span2"><b>Status</b></div>
+                        <div class="span2"><b>Last Updated By</b></div>
+                        <div class="span2"><b>Relevant Condition</b></div>
+                        <div class="span2"><b>Condition </b></div>
+                    </div>
+                    <br />
+                    <div class="row">
+                        <div class="span2"> {{ object.get_status_display }}</div>
+                        <div class="span2"> {{ object.updated_by }}</div>
+                        <div class="span2"> {{ object.condition }}</div>
+                    </div>
+                    <hr />
+                </div>
+            </div>
+        </div>
+{#        <div class="row span12 ">#}
+{##}
+{#            <div class="row span8 panel-group">#}
+{#                <div class="text-success text-center">#}
+{#                    <h4 class="panel-title">#}
+{#                        <a class="accordion-toggle" data-toggle="collapse" data-parent=".panel-group" href="#alert-patient-detail-{{  object.id }}">Patient Details</a>#}
+{#                    </h4>#}
+{#                </div><br>#}
+{#                <div id="alert-patient-detail-{{ object.id  }}" class="accordion-body collapse in">#}
+{#                    <div class="row">#}
+{#                        <div class="span2"><b>Patient ID</b></div>#}
+{#                        <div class="span2"><b>Patient Salutation</b></div>#}
+{#                        <div class="span2"><b>Patient First Name </b></div>#}
+{#                        <div class="span2"><b>Patient Surname </b></div>#}
+{#                    </div>#}
+{#                    <br />#}
+{#                    <div class="row">#}
+{#                        <div class="span2"> {{ object.patient.id }}</div>#}
+{#                        <div class="span2"> {{ object.patient.salutation }}</div>#}
+{#                        <div class="span2"> {{ object.patient.first_name }}</div>#}
+{#                        <div class="span2"> {{ object.patient.surname }}</div>#}
+{#                    </div>#}
+{#                    <br />#}
+{#                    <div class="row">#}
+{#                        <div class="span2"><b>Patient Sex</b></div>#}
+{#                        <div class="span2"><b>Patient Address </b></div>#}
+{#                        <div class="span2"><b>Patient District</b></div>#}
+{#                        <div class="span2"><b>Patient Post Code </b></div>#}
+{#                    </div>#}
+{#                    <br />#}
+{#                    <div class="row">#}
+{#                        <div class="span2"> {{ object.patient.get_sex_display }}</div>#}
+{#                        <div class="span2"> {{ object.patient.address|truncatewords:10  }}</div>#}
+{#                        <div class="span2"> {{ object.patient.district.name }}</div>#}
+{#                        <div class="span2"> {{ object.patient.postcode }}</div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        {% if object.patient.healthcare_workers %}#}
+{#        <div class="row span12 ">#}
+{##}
+{#            <div class="row span8 panel-group">#}
+{#                <div class="text-success text-center">#}
+{#                    <h4 class="panel-title">#}
+{#                        <a class="accordion-toggle" data-toggle="collapse" data-parent=".panel-group" href="#alert-hcw-detail-{{  object.id }}">Health-worker Details</a>#}
+{#                    </h4>#}
+{#                </div><br>#}
+{#                <div id="alert-hcw-detail-{{ object.id  }}" class="accordion-body collapse in">#}
+{#                    {% for aHealthcareWorker in object.patient.healthcare_workers.all|slice:"1:2"  %}#}
+{#                    <div class="row">#}
+{#                        <div class="span2"><b>HCW IDs</b></div>#}
+{#                        <div class="span2"><b>HCW First Name</b></div>#}
+{#                        <div class="span2"><b>HCW Surname </b></div>#}
+{#                    </div>#}
+{#                    <br />#}
+{#                    <div class="row">#}
+{#                        <div class="span2"> {{ aHealthcareWorker.id }}</div>#}
+{#                        <div class="span2"> {{ aHealthcareWorker.first_name }}</div>#}
+{#                        <div class="span2"> {{ aHealthcareWorker.surname }}</div>#}
+{#                    </div>#}
+{#                    <br />#}
+{#                    {% endfor %}#}
+{#                </div>#}
+{#            </div>#}
+{#        </div>#}
+{#        {% endif %}#}
+{#    </div>#}
+
+
+{#    {% if object.patient.lead_clinicians %}#}
+{#    <div class="row span8 panel-group">#}
+{#        <div class="text-success text-center">#}
+{#            <h4 class="panel-title">#}
+{#                Lead Clinicians Details#}
+{#            </h4>#}
+{#        </div><br>#}
+{#        <div class="row panel-collapse collapse in">#}
+{#            {% for aLeadClinician in object.patient.lead_clinicians.all  %}#}
+{#                <div class="span4">#}
+{#                    <div from-inline="" class="row">#}
+{#                        <div class="span2">Primary Clinician ID:</div>#}
+{#                        <div class="span4">#}
+{#                            {{ aLeadClinician.id }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                    <div from-inline="" class="row">#}
+{#                        <div class="span2">Primary Clinician Name:</div>#}
+{#                        <div class="span4">#}
+{#                            {{ aLeadClinician.first_name }}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endfor %}#}
+{#        </div>#}
+{#    </div>#}
+{#    {% endif %}#}
+
+{% endblock %}
+{#    </div>#}
+{#    <div class="modal-footer">#}
+{#        <button type="button" data-dismiss="modal" class="btn">Close</button>#}
+{#        <button id="delete-btn" class="btn btn-danger">Delete</button>#}
+{#        <button type="button" class="btn btn-primary">Forward</button>#}
+{#        <button type="button" class="btn btn-primary">View Dashboard</button>#}
+{#    </div>#}
+{#    </div>#}
+{##}

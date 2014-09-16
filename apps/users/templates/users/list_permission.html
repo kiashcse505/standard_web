@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="view-body">
+     <div class="text-success text-center">
+                    <h2>Manage Permission</h2>
+                    <hr>
+                </div>
+                <div class="row">
+                    <div class="span10 offset1">
+
+                        <div class="table-responsive">
+                           <form id="permission-form" accept-charset="utf-8" method="post" action="{% url 'permission-list' %}">{% csrf_token %}
+                            <table class="table table-bordered">
+                                <thead>
+                                    <tr>
+                                        <th>Permissions/Groups</th>
+                                        {% for aGroup in groups %}
+                                            <th>{{ aGroup.name }}</th>
+                                        {% endfor %}
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                                                        
+                                        {% for anPermission in permissions %}
+                                            <tr>
+                                                <td>{{ anPermission.name }}</td>
+                                                <!--<td>{{ anPermission.codename }}</td>-->
+                                                {% for aGroup in groups %}
+                                                <td>
+                                                    {%  if permission_map|getitem:aGroup.id and permission_map|getitem:aGroup.id|getitem:anPermission.id %}
+{#                                                   {%  if permission_map[aGroup.id] and permission_map|getitem:aGroup.id|getitem:anPermission.id %}#}
+                                                        <input class="permission-checkbox" type="checkbox" checked="checked" id="permission-checkbox-list" name="perm_map[{{ anPermission.id }}][]" value="{{ aGroup.id }}" />
+                                                   {% else %}
+                                                        <input class="permission-checkbox" type="checkbox" id="permission-checkbox-list" name="perm_map[{{ anPermission.id }}][]" value="{{ aGroup.id }}" />
+                                                   {% endif %}
+
+                                                </td>                                            
+                                                {% endfor %}   
+                                            </tr>    
+                                        {% endfor %}
+                                </tbody>
+                            </table>
+                           </form>
+                        </div>
+                    </div>
+
+                <div class="span10 offset1">
+                        <div class="controls text-center">
+                            <button id="update-btn" class="btn btn-success btn-large">Update</button>
+                        </div>
+                </div>
+</div>
+{% endblock %}
+
+{% block footer_scripts %}
+    <script type="text/javascript">
+        $(document).ready(function(){
+            $("#update-btn").click(function(){
+                $("#permission-form").submit();
+            });
+        });
+    </script>
+{% endblock %}

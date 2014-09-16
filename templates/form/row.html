@@ -1,0 +1,13 @@
+<div class="row">
+    <div class="span2">{{ row_label }}
+    {% if row_required %}<span class="required"> {{row_required }} </span>{% endif %}:</div>
+    <div class="span4">
+        {% block row_body_block %}
+            {{ row_field }}
+            {{ row_field_errors }}
+        {% endblock %}
+        {% if row_label == "Pin Code" %}
+             <button id="reveal_pass" style="margin-bottom: 10px;color: green" disabled>reveal</button>
+        {% endif %}
+    </div>
+</div>

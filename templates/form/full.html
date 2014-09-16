@@ -1,0 +1,216 @@
+<form action="" method="POST" enctype="multipart/form-data">{% csrf_token %}
+    <div id="patient-info" class="row">
+
+        <div class="row span12 panel-group">
+            <div class="text-success text-center">
+                <h4 class="panel-title">Patient Required Field</h4>
+            </div>
+            <br/>
+
+            <div class="row panel-collapse collapse in">
+                <div class="span6">
+
+
+
+                    <div class="row">
+                        <div class="span2">Salutation:</div>
+                        <div class="span4">
+                            {{ form.salutation }}
+                            {{ form.salutation.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Email:</div>
+                        <div class="span4">
+                            {{ form.email }}
+                            {{ form.email.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Birthday:</div>
+                        <div class="span4">
+                            <div class="input-append date">
+                                {{ form.birthdate }}
+                                <span class="add-on">
+                                  <i data-time-icon="icon-time" data-date-icon="icon-calendar">
+                                  </i>
+                                </span>
+                            </div>
+                            {{ form.birthdate.errors }}
+                        </div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <div class="row">
+                        <div class="span2">Address :</div>
+                        <div class="span4">
+                            {{ form.address_1 }}
+                            {{ form.address_1.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Phone :</div>
+                        <div class="span4">
+                            {{ form.phone }}
+                            {{ form.phone.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Mobile:</div>
+                        <div class="span4">
+                            {{ form.mobile }}
+                            {{ form.mobile.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">PostCode:</div>
+                        <div class="span4">
+                            {{ form.postcode }}
+                            {{ form.postcode.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Status:</div>
+                        <div class="span4">
+                            {{ form.status }}
+                            {{ form.status.errors }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row span12 panel-group">
+            <div class="text-success text-center">
+                <h4 class="panel-title">GEO Location</h4>
+            </div>
+            <br/>
+
+            <div class="row panel-collapse collapse in">
+                <div class="span6">
+                    <div class="row">
+                        <div class="span2">Country:</div>
+                        <div class="span4">
+                            {{ form.country }}
+                            {{ form.country.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Division:</div>
+                        <div class="span4">
+                            {{ form.division }}
+                            {{ form.division.errors }}
+                        </div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <div class="row">
+                        <div class="span2">District:</div>
+                        <div class="span4">
+                            {{ form.district }}
+                            {{ form.district.errors }}
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="span2">Region:</div>
+                        <div class="span4">
+                            {{ form.region }}
+                            {{ form.region.errors }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row span12 panel-group" id="optiontionalInfoAccordion">
+            <hr>
+            <div class="text-success text-center">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#optiontionalInfoAccordion" href="#optionalInfoCollapse">Other
+                        Informations</a>
+                </h4>
+            </div>
+            <br/>
+
+            <div class="row panel-collapse collapse" id="optionalInfoCollapse">
+                <div class="span6">
+                    <div class="row">
+                        <div class="span2">Lead Clinician:</div>
+                        <div class="span4">
+                            {{ form.lead_clinician }}
+                            {{ form.lead_clinician.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Sex:</div>
+                        <div class="span4">
+                            {{ form.sex }}
+                            {{ form.sex.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Temporary Id:</div>
+                        <div class="span4">
+                            {{ form.temporary_id }}
+                            {{ form.temporary_id.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Photo:</div>
+                        <div class="span4">
+
+
+                            {{ form.photo }}
+                            {{ form.photo.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Privacy:</div>
+                        <div class="span4">
+                            {{ form.privacy }}
+                            {{ form.privacy.errors }}
+                        </div>
+                    </div>
+                </div>
+                <div class="span6">
+                    <div class="row">
+                        <div class="span2">Healthcare workers:</div>
+                        <div class="span4">
+                            {{ form.healthcare_workers }}
+                            {{ form.healthcare_workers.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Address2:</div>
+                        <div class="span4">
+                            {{ form.address_2 }}
+                            {{ form.address_2.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Address3:</div>
+                        <div class="span4">
+                            {{ form.address_3 }}
+                            {{ form.address_3.errors }}
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="span2">Nickname:</div>
+                        <div class="span4">
+                            {{ form.nickname }}
+                            {{ form.nickname.errors }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row control-group" style="margin-left:260px;">
+            <div class="span2">&nbsp;</div>
+            <div class="span3 controls">
+                <input type="submit" class="btn btn-primary" value="Submit">
+            </div>
+        </div>
+    </div>
+</form>

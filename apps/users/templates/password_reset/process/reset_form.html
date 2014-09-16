@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% block content %}
+   <div class="view-body">
+    <div class="text-success text-center">
+        <h2>Telehealth Clinical Portal</h2>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div class="row text-center">
+                <h4>Password Reset Request</h4>
+                <hr>
+            </div>
+            {% if form.errors %}
+            <div class="offset3">
+                {% if form.non_field_errors %}
+                <div class="row">
+                    <div class="span6 alert alert-error">
+                        {{ form.non_field_errors }}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            {% endif %}
+            <div class="offset3">
+                {% if validlink %}
+{#                    Please enter new password: {{ form.as_p }}#}
+                    <form id="reset-form" accept-charset="utf-8" method="post" action="#" >{%  csrf_token %}
+                        <div class="row">
+                                <div class="span2">{{ form.new_password1.label }} </div>
+                                <div class="span6">
+                                    {{ form.new_password1 }}
+                                    {{ form.new_password1.error }}
+                                </div>
+                         </div>
+                        <div class="row">
+                                <div class="span2">{{ form.new_password2.label }} </div>
+                                <div class="span6">
+                                    {{ form.new_password2 }}
+                                    {{ form.new_password2.error }}
+                                </div>
+                         </div>
+                         <div class="row control-group">
+                                <div class="span2">&nbsp;</div>
+                                <div class="span3 controls">
+                                    <button class="btn" type="submit">submit</button>
+                                </div>
+                         </div>
+                    </form>
+                {% else %}
+                    <div class="row">
+                        <div class="text-center alert alert-error">
+                            <p>The password reset link was invalid</p>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+            <hr>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
+
+
+

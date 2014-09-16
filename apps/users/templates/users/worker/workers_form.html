@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="row">
+	<div class="span12">
+        <div class="text-success text-center">
+            {% if form.instance.id  %}
+                <h2>Update Alert</h2>
+            {% else %}
+                <h2>Send Alert</h2>
+            {% endif %}
+            <hr>
+        </div>
+        {% if form.errors %}
+            <div class="row">
+                <div class="text-success text-center">
+                    {% for aField in form.non_field_error %}
+                       <span class="text-error">{{ aField.errors }}</span>
+                    {% endfor %}
+                </div>
+                <div class="text-success text-center">
+                    {% for anError in form.errors %}
+                       <span class="text-error">{{ anError }}</span>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+        <div class="offset3">
+          <form action="../" method="POST">{% csrf_token %}
+                <div class="row">
+                    <div class="span2">From Group</div>
+                    <div class="span6">
+                        {{ form.from_group }}
+                        {{ form.from_group.errors }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">To User</div>
+                    <div class="span6">
+                        {{ form.to_users }}
+                        {{ form.to_users.errors }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">Patient</div>
+                    <div class="span6">
+                        {{ form.patient }}
+                        {{ form.patient.errors }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">Type</div>
+                    <div class="span6">
+                        {{ form.type }}
+                        {{ form.type.errors }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">Priority</div>
+                    <div class="span6">
+                        {{ form.priority }}
+                        {{ form.priority.errors }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">Subject</div>
+                    <div class="span6">
+                        {{ form.subject }}
+                        {{ form.subject.errors }}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="span2">Message</div>
+                    <div class="span6">
+                        {{ form.text }}
+                        {{ form.text.errors }}
+                    </div>
+                </div>
+                <div class="row control-group">
+                    <div class="span2">&nbsp;</div>
+                    <div class="span3 controls">
+                         {% if form.instance.id  %}
+                            <input type="submit" value="Update" class="btn btn-success" />
+                        {% else %}
+                            <input type="submit" value="Send" class="btn btn-warning" />
+                        {% endif %}
+
+                    </div>
+                </div>
+          </form>
+        </div>
+   </div>
+</div>
+{% endblock %}

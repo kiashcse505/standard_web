@@ -1,0 +1,12 @@
+{% autoescape off %}
+Dear User,
+<br />
+<p>You have made a request for a reminder of your username on the Tele-healthcare web portal on {{ user.date_joined|date:"M d, Y"  }} at {{ user.date_joined|date:"H:i:s"  }}.
+<br />
+Your user name is <b>{{ user.username }}</b>.</p>
+
+Kind regards
+<br />
+The Support Team
+
+{% endautoescape %}

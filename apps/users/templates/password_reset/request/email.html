@@ -1,0 +1,10 @@
+{% autoescape off %}
+Helpdesk,
+<br />
+<br />
+<p>Please reset the password of user <b>{{ user }}</b>.</p>
+<p><a href="{{ protocol}}://{{ domain }}{% url 'password-reset-confirm' uid token %}">Click here</a> to reset the password now.</p>
+
+
+
+{% endautoescape %}

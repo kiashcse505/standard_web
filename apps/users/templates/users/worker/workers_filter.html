@@ -1,0 +1,56 @@
+<div class="row">
+    <div class="span6" >
+        <div class="pull-left">
+            <ul class='inline'>
+                <!--<li>-->
+                    <!--<label for="my-patient-filter" class="radio">-->
+                        <!--<input id="my-patient-filter" type="radio" name='patient-filter' value="my" > My User-->
+                    <!--</label>-->
+                <!--</li>-->
+                <li>
+                    <label for="all-patient-filter" class="radio">
+                        <input id="all-patient-filter" type="radio" name='patient-filter' value="my" > All HealthWorker
+                    </label>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="span6">
+        <button id="filter-switch" date-state='hide' data-value="Filters" type="button" data-target="#filters" data-toggle="collapse" class="btn btn-small pull-right">
+            Show Filters
+        </button>
+    </div>
+</div>
+<div id="filters" class="row collapse out span12" >
+    <div>
+        <div class="span12 row text-center">
+            <label></label>
+            <div class="span12 row">
+                <div class="span10 row text-center">
+                    <span class="span2">ID</span>
+                    <input id="filter-0" type="text" class="input-xxlarge" placeholder="HealthWorker Id">
+                </div>
+            </div>
+        </div>
+        <div class="span12 row text-center">
+            <label></label>
+            <div class="span12 row">
+                <div class="span10 row text-center">
+                    <span class="span2">Username</span>
+                    <input id="filter-1" type="text" class="input-xxlarge" placeholder="HealthWorker Username">
+                </div>
+            </div>
+        </div>
+        <div class="span12 row text-center">
+            <label></label>
+            <div class="span12 row">
+                <div class="span10 row text-center">
+                    <span class="span2">Email</span>
+                    <input id="filter-2" type="text" class="input-xxlarge" placeholder="HealthWorker Email">
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>

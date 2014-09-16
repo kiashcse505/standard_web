@@ -1,0 +1,15 @@
+{% block form_errors_block %}
+    {% if form.errors %}
+        <div class="offset3">
+            <div class="row">
+                <div class="span6 alert alert-error">
+                    {% block from_errors %}
+                        {% for an_error in form.non_field_errors %}
+                            {{ an_error }}
+                        {% endfor %}
+                    {% endblock %}
+                </div>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

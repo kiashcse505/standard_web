@@ -1,0 +1,13 @@
+{
+  "name": "jquery-django-messages",
+  "homepage": "https://github.com/atkinson/jquery-django-messages",
+  "_release": "72eddb2f77",
+  "_resolution": {
+    "type": "branch",
+    "branch": "master",
+    "commit": "72eddb2f77a114aa4a593fdc3107c95a84afcc95"
+  },
+  "_source": "https://github.com/atkinson/jquery-django-messages.git",
+  "_target": "*",
+  "_originalSource": "https://github.com/atkinson/jquery-django-messages.git"
+}

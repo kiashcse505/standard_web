@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+
+{% block content %}
+   <div class="view-body">
+    <div class="text-success text-center">
+        <h2>Telehealth Clinical Portal</h2>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div class="row text-center">
+                <h4>Password Reset</h4>
+                <hr>
+            </div>
+
+            <div class="offset3">
+                <form id="reset_form" accept-charset="utf-8" method="post" action="{% url 'password_reset' %}">{%  csrf_token %}
+                 <div class="row">
+                        <div class="span2">Email </div>
+                        <div class="span6">
+                            {{ form.email }}
+
+                        </div>
+                    </div>
+                 <div class="row control-group">
+                        <div class="span2">&nbsp;</div>
+                        <div class="span2 controls">
+                            <button class="btn" type="submit">submit</button>
+                        </div>
+                    </div>
+                </form>
+
+            </div>
+            <hr>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
+

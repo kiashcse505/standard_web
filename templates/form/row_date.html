@@ -1,0 +1,21 @@
+<div class="row">
+{#            <div class="span2">{{ row_label }}<span class="required">{{row_required }}</span> :</div>#}
+            <div class="span2"><span class="required"></span></div>
+            <div class="span4">
+                <select id="format" style="display: None">
+                    <option value="...">Please Select Date format</option>
+                    <option value="dd-mm-yy">DD-MM-YYYY</option>
+                    <option value="mm-dd-yy">MM-DD-YYYY</option>
+                    <option value="yy-mm-dd">YYYY-MM-DD</option>
+                </select>
+
+                <div id="birthdate-box">
+                    {% block row_body_block %}
+						{{ row_field }}
+						{{ row_field_errors }}
+					{% endblock %}
+                </div>
+            </div>
+        </div>
+
+               

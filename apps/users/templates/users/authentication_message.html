@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+
+{% block content %}
+{{ context }}
+<div class="view-body">
+    <div class="text-success text-center">
+        <h2>Telehealth Clinical Portal</h2>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div class="login-container">
+                <div class="text-center">
+                     <h2>You do not have Access to This Page</h2>
+                </div>
+            </div>
+            <hr>
+        </div>
+
+
+    </div>
+</div>
+{% endblock %}
+
+{% block fromErrorNotifierBlock %}{% endblock %}
+
+{% block headextra %}
+{% load static %}
+<link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+{% endblock %}
+
+

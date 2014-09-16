@@ -1,0 +1,9 @@
+{% load i18n %}
+
+<div id="session_security_warning" class="session_security" style="display:none">
+    <div class="session_security_overlay"></div>
+    <div class="session_security_modal">
+        <h3>{% trans 'Your session timed out' %}</h3>
+        <p>{% trans 'Click on the page to continue using the server' %}</p>
+    </div>
+</div>

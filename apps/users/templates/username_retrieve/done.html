@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+    {{ context }}
+  <div class="view-body">
+    <div class="text-success text-center">
+        <h2>Telehealth Clinical Portal</h2>
+        <hr>
+    </div>
+    <div class="row">
+        <div class="span12">
+            <div class="row text-center">
+                <h4>Request Username Reminder</h4>
+                <hr>
+            </div>
+            <div class="row">
+                <div class="text-center alert alert-success">
+                    <p>A reminder of your username has been sent to your email address. Please check your inbox and junk mail.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <a href="/">Back to login page</a>
+
+  </div>
+
+{% endblock %}

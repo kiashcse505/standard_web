@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% load js staticfiles %}
+
+{% block content %}
+    <div class="view-body">
+        <div class="text-success text-center">
+            {% block heading %}{% endblock %}
+            <hr>
+        </div>
+        <div class='clearfix'></div>
+
+        {% block detail_content_before_hook %}{% endblock %}
+        <div class="row">
+            {% block detail_content %}{% endblock %}
+        </div>
+        {% block detail_content_after_hook %}{% endblock %}
+    </div>
+{% endblock %}
+
+{% block headextra %}
+
+{% endblock %}
+
+<script type='text/javascript'>
+    $(document).ready(function(){
+        {% block pageReadyScripts %}
+        {% endblock %}
+    });
+</script>
+
+{% block footer_scripts %}
+
+{% endblock %}

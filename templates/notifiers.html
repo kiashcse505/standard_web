@@ -1,0 +1,12 @@
+
+{% if notifications %}
+    {% for aMessage in notifications %}
+        {% if isError %}
+            template.errorAlert("{{   aMessage|upper }} {{ msg_extra }}", '{% if layout %}{{ layout }}{% else %}bottomRight{% endif %}' );
+        {% else %}
+            template.infoAlert("{{   aMessage|upper }} {{ msg_extra }}", '{% if layout %}{{ layout }}{% else %}bottomRight{% endif %}' );
+        {% endif %}
+    {% endfor %}
+{% endif %}
+
+

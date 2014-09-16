@@ -1,0 +1,12 @@
+
+div.dataTables_info{
+    padding-bottom: 8px;
+}
+
+#DataTables_Table_0_wrapper #DataTables_Table_0_length{
+    margin-top: 5px;
+}
+
+#DataTables_Table_0_wrapper #DataTables_Table_0_length select{
+    height: 30px;
+}

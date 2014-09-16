@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+{% load js staticfiles %}
+{% block content %}
+<div class="row">
+    <div class="span12">
+
+{#        {% include 'form/header.html' %}#}
+        {# HEADER BODY #}
+        {% block form_header_block %}
+        <div class="text-success text-center">
+            {% block form_header %}
+                <h3>{% if form.instance.id  %} Update {% else %} Add {% endif %} {% block header_text %}{% endblock %}</h3>
+                {% block headerextra %}{% endblock %}
+            {% endblock %}
+            <hr>
+        </div>
+        {% endblock %}
+        {# HEADER BODY #}
+
+{#        {% include 'form/error.html'  %}#}
+        {# ERROR BODY #}
+{#        {% block form_errors_block %}#}
+{#            {% if form.non_field_errors %}#}
+{#                <div class="offset3">#}
+{#                    <div class="row">#}
+{#                        <div class="span6 alert alert-error">#}
+{#                            {% block from_errors %}#}
+{#                                {% for an_error in form.non_field_errors %}#}
+{#                                    {{ an_error }}#}
+{#                                {% endfor %}#}
+{#                            {% endblock %}#}
+{#                        </div>#}
+{#                    </div>#}
+{#                </div>#}
+{#            {% endif %}#}
+{#        {% endblock %}#}
+
+
+{#        {% include 'form/body.html' %}#}
+         {# FORM BODY #}
+         <div class="view-body">
+             {% block form_body_before_hook %}{% endblock %}
+             <div class="row">
+                 <div class="span12">
+                     {% block html_form_block %}
+                         <form action="" method="POST" enctype="multipart/form-data" id="entity-update-form" >{% csrf_token %}
+                            {% block html_form_elements %}
+                            {% endblock %}
+                         </form>
+                     {% endblock %}
+                 </div>
+                {% block form_buttons %}
+                 <div class="pull-right">
+                        <input type="button"  class="btn btn-info hide" id="add-pathway-btn-selector"  value="Add Pathway">
+                    </div>
+                    <div class="row control-group" >
+                        <hr />
+                        <div class="span2">&nbsp;</div>
+                        <div class="span3 offset3 controls">
+                            {% block formSubmitBtnBlock %}
+                                <input type="button"  class="btn btn-success entity-submit-btn"  value="{% block submitBtnText %}{% if form.instance.id  %} Update {% else %} Add {% endif %}{% endblock %}">
+                            {% endblock %}
+                            {% block formCancelBtnBlock %}
+                                <input type="button"  class="btn btn-danger entity-cancel-btn"  value="Cancel">
+                            {% endblock %}
+                        </div>
+                    </div>
+                {% endblock %}
+             </div>
+             {% block form_body_after_hook %}{% endblock %}
+         </div>
+        {# FORM BODY #}
+
+    </div>
+</div>
+{% endblock %}

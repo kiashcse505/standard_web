@@ -1,0 +1,27 @@
+<div class="row">
+                    <div class="span2">Photo:</div>
+                    <div class="span4">
+                        <div class="fileinput fileinput-new" data-provides="fileinput" id="photo-image-preview-container-id" data-original="{{ MEDIA_URL }}{{ patient.get_photo }}" >
+                            <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="width: 208px;height: 150px;"  >
+                                {% if form.instance.id %}
+                                    <img class="media-profile"  src="{{ MEDIA_URL }}{{ patient.get_photo }}"  />{% endif %}
+                            </div>
+                            <div>
+                                <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span>
+                                <input type="file" name="photo" id="id_photo">
+                                 </span>
+
+                                <a href="#" class="btn btn-default {% if not patient.photo %} fileinput-exists {% endif %} hide" id="photo-undo-btn-id" data-dismiss="fileinput" >Undo</a>
+
+                                <a href="#" class="btn btn-default {% if not patient.photo %} fileinput-exists {% endif %}" id="perview-image-remove-btn" data-dismiss="fileinput" >Remove</a>
+
+                                {% if patient.photo %}
+                                    <input id="photo-clear-id" type="checkbox" name="photo-clear" style="margin-left:20px;"  class="hide"  >
+                                {% endif %}
+
+                            </div>
+                            {{ form.photo.errors }}
+                        </div>
+                    </div>
+
+                </div>

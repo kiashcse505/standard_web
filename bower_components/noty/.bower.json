@@ -1,0 +1,14 @@
+{
+  "name": "noty",
+  "homepage": "https://github.com/needim/noty",
+  "version": "2.2.2",
+  "_release": "2.2.2",
+  "_resolution": {
+    "type": "version",
+    "tag": "v2.2.2",
+    "commit": "49d084be46f756393317200cccb11f373751ea67"
+  },
+  "_source": "git://github.com/needim/noty.git",
+  "_target": "*",
+  "_originalSource": "noty"
+}

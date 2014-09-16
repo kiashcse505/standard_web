@@ -1,0 +1,176 @@
+.wisys-modal{
+display: none;
+}
+
+.ui-datepicker{
+font-size: 11px !important;
+line-height: 12px !important;
+}
+
+
+/*.country-selector .dropdown-menu{
+height: 200px;
+overflow: scroll;
+width: 360px;
+padding-left: 5px;
+}
+
+.country-selector .dropdown-menu li a{
+padding-left: 0px;
+}*/
+
+
+.select2-container{
+width: 300px;
+}
+
+.select2-container .select2-choice{
+height: 32px;
+line-height: 32px;
+}
+
+.flag-span{
+height: 32px;
+line-height: 32px;
+}
+
+.flag-div{
+line-height: 32px;
+}
+
+.country-nicename-span{
+margin-left: 0px;
+}
+
+.select2-container .f32 span{
+width:260px;
+}
+
+
+/*............ Bootstrap Table Hover ...........*/
+
+/*table {
+width: 100%;
+}
+*/
+table tr:hover {
+/* /background-color: #E0E0E0 !important;*/
+}
+
+table thead tr {
+background-color: #E0E0E0 !important;
+}
+
+
+/*.................. Banner ..................*/
+
+#banner-div{
+padding-top: 10px;
+padding-bottom: 10px;
+}
+
+#bt-logo-div{
+margin-left: 0px;
+}
+#client-logo-div{
+}
+
+#bt-logo, #client-logo{
+width: auto;
+height: 45px;
+}
+
+
+
+
+/* Ajax Loading */
+
+.ajax-loader{
+background-image: url('../images/ajax-loader.gif');
+background-repeat: no-repeat;
+width: 15px;
+height: 15px;
+}
+
+#ajax-loading-modal{
+width:15px;
+height: 15px;
+}
+
+.navbar{
+z-index:1000;
+}
+
+/* For Bigger Checkbox */
+
+
+.no-left-margin{
+margin-left:0px !important;
+}
+
+.top-margin-fix{
+    margin-top:5px;
+}
+
+.left-margin-fix{
+margin-left:-20px;
+}
+
+.right-margin-fix{
+margin-left:-20px;
+}
+
+.bordered-box{
+display: block;
+border: 1px solid black;
+background: #ccc;
+padding: 4px;
+}
+
+/* hooks */
+
+/*.input-append input[type=text]{*/
+/*height: 30px;*/
+/*}*/
+
+.entity-table-row{
+cursor: pointer;
+}
+
+.table-hover{
+cursor : pointer;
+}
+
+
+.hidden{
+display: none;
+}
+
+
+.modal-content{
+overflow-x: hidden;
+/*overflow-y:scroll;*/
+}
+
+
+.default-border{
+border: 1px solid black;
+}
+
+.red-border{
+border: 1px solid red;
+}
+
+.blue-border{
+border: 1px solid blue;
+}
+
+/*#login_form input[type=text],#login_form input[type=password]{*/
+    /*height: 30px;*/
+/*}*/
+
+.thumb{
+    width: 100px;
+    height: auto;
+}
+
