@@ -48,15 +48,15 @@ THIRD_PARTY_APPS = (
 
 
     "django_countries",
-    "postal",
+    #"postal",
 
     # "celery",
     # "djcelery",
     'bootstrap3_datetime',
 
     "simple_audit",
-    'import_export',
-    'haystack',
+    #'import_export',
+    #'haystack',
 
 
 )
@@ -66,7 +66,7 @@ LOCAL_APPS = (
     'apps.wisys',
     'apps.geolocation',
     'apps.users',
-    'sphinxdoc',
+    #'sphinxdoc',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS  + LOCAL_APPS

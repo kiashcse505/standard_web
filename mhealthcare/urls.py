@@ -20,7 +20,7 @@ urlpatterns = patterns('',
     url(r'^js/', include('djangojs.urls')),
     url(r'^chaining/', include('smart_selects.urls')),
     url(r'session_security/', include('session_security.urls')),
-    url(r'^docs/', include('sphinxdoc.urls')),
+    #url(r'^docs/', include('sphinxdoc.urls')),
 
     # url(r'^%s%s/' % (settings.SITE_URL_BASE, settings.DAJAXICE_MEDIA_PREFIX) , include('dajaxice.urls')),
 
