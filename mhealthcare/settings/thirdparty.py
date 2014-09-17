@@ -152,15 +152,15 @@ HAYSTACK_CONNECTIONS = {
 
 ############################################################################
 
-import djcelery
-djcelery.setup_loader()
+# import djcelery
+# djcelery.setup_loader()
 
 
-#TIME_ZONE = 'UTC'
-#USE_TZ = True
-CELERY_ENABLE_UTC = False
-#CELERY_TIMEZONE = 'Australia/Sydney'
-CELERYD_TASK_TIME_LIMIT = 300
+# #TIME_ZONE = 'UTC'
+# #USE_TZ = True
+# CELERY_ENABLE_UTC = False
+# #CELERY_TIMEZONE = 'Australia/Sydney'
+# CELERYD_TASK_TIME_LIMIT = 300
 
 
 #BROKER_HOST = "localhost"
