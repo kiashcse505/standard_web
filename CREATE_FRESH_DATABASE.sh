@@ -1,5 +1,5 @@
-mysqladmin -u root -proot drop standard_web
-mysqladmin -u root -proot create standard_web
+mysqladmin -u root -proot drop mhealthcarev2
+mysqladmin -u root -proot create mhealthcarev2
 
 find -type d -name 'migrations' -exec rm -rfv {} \;
 
